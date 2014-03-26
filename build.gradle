@@ -1,0 +1,21 @@
+apply plugin: 'java'
+
+sourceCompatibility = '1.8'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+//apply from: 'http://gradle-plugins.mihosoft.eu/latest/vlicenseheader.gradle'
+//repairHeaders.licenseHeaderText = new File(rootDir,'LICENSE-TEMPLATE')
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'eu.mihosoft.vgitarchive.Main'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.10'
+    
+    compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '3.3.1.201403241930-r'
+}
