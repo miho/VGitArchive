@@ -15,3 +15,6 @@ script:
 
 after_failure:
   - "cat ./build/test-results/*.xml"
+  
+after_success:
+  - "cat ./build/test-results/*.xml"
