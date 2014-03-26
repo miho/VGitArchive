@@ -53,7 +53,7 @@ public class VersionedFileTest {
     @Test
     public void createFileTest() {
 
-        File f = new File("versionedFile.vfile");
+        File f = new File("build/versionedFile.vfile");
 
         createVersionedFile(f);
 
@@ -84,7 +84,7 @@ public class VersionedFileTest {
     @Test
     public void commitFiles() {
 
-        File f = new File("versionedFile.vfile");
+        File f = new File("build/versionedFile.vfile");
 
         VersionedFile vf = createVersionedFile(f);
 
@@ -123,7 +123,7 @@ public class VersionedFileTest {
     @Test
     public void containsHistoryOfFile() {
 
-        File f0 = new File("versionedFile0.vfile");
+        File f0 = new File("build/versionedFile0.vfile");
         VersionedFile vf0 = createVersionedFile(f0);
 
         try {
@@ -143,7 +143,7 @@ public class VersionedFileTest {
             fail(ex.getMessage());
         }
 
-        File f1 = new File("versionedFile1.vfile");
+        File f1 = new File("build/versionedFile1.vfile");
         VersionedFile vf1 = createVersionedFile(f1);
 
         try {
@@ -163,7 +163,7 @@ public class VersionedFileTest {
             fail(ex.getMessage());
         }
 
-        File f2 = new File("versionedFile2.vfile");
+        File f2 = new File("build/versionedFile2.vfile");
 
         try {
             IOUtil.copyFile(f1, f2);
