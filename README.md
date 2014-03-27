@@ -34,44 +34,44 @@ Navigate to the [Gradle](http://www.gradle.org/) project (e.g., `path/to/VGitArc
 
 ```java
 public class Main {
-  public static void main(String[] args) {
-    try {
-      VersionedFile.setTmpFolder(Paths.get("tmp"));
 
-      try (
-              // create and open the file
-              VersionedFile f = new VersionedFile(new File("project.vfile")).create().open();
-              // prepare writing to a text file
-              BufferedWriter writer = new BufferedWriter(
-                      new FileWriter(f.getContent().getPath() + "/file1.txt"))) {
+    public static void main(String[] args) {
+        VersionedFile.setTmpFolder(Paths.get("tmp"));
 
-        // first version
-        f.commit("empty file created");
+        try (
+                // create and open the file
+                VersionedFile f = new VersionedFile(new File("project.vfile")).
+                create().open();
+                // prepare writing to a text file
+                BufferedWriter writer = new BufferedWriter(
+                        new FileWriter(f.getContent().
+                                getPath() + "/file1.txt"))) {
 
-        // second version
-        writer.write("NanoTime 1: " + System.nanoTime() + "\n");
-        writer.flush();
-        f.commit("timestamp added");
+            // first version
+            f.commit("empty file created");
 
-        // third version
-        writer.write("NanoTime 2: " + System.nanoTime() + "\n");
-        writer.flush();
-        f.commit("another timestamp added");
+            // second version
+            writer.write("NanoTime 1: " + System.nanoTime() + "\n");
+            writer.flush();
+            f.commit("timestamp added");
 
-        // checkout latest/newest version
-        f.checkoutLatestVersion();
+            // third version
+            writer.write("NanoTime 2: " + System.nanoTime() + "\n");
+            writer.flush();
+            f.commit("another timestamp added");
 
-        // checkout previous versions one by one
-        while (f.hasPreviousVersion()) {
-          System.out.println("-> press enter to checkout the previous version");
-          System.in.read(); // waiting for user input
-          f.checkoutPreviousVersion();
+            // checkout latest/newest version
+            f.checkoutLatestVersion();
+
+            // checkout previous versions one by one
+            while (f.hasPreviousVersion()) {
+                System.out.println("-> press enter to checkout the previous version");
+                System.in.read(); // waiting for user input
+                f.checkoutPreviousVersion();
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace(System.out);
         }
-      }
-
-    } catch (IOException ex) {
-      ex.printStackTrace(System.out);
     }
-  }
 }
 ```
