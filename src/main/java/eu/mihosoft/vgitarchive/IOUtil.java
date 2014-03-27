@@ -57,7 +57,7 @@ import java.util.zip.ZipOutputStream;
  * to ultimately delete temporary files before the JVM shuts down. To disable
  * this, call {@link #disableShutdownHook(boolean) }.</p>
  *
- * @author Michael Hoffer <info@michaelhoffer.de>
+ * @author Michael Hoffer &lt;info@michaelhoffer.de&gt;
  */
 class IOUtil {
 

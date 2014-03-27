@@ -41,7 +41,7 @@ import java.io.ObjectStreamClass;
  * and some other serialized classes/objects can be loaded. There is usally no
  * need to use this input stream outside of VRL core classes.
  *
- * @author Michael Hoffer <info@michaelhoffer.de>
+ * @author Michael Hoffer &lt;info@michaelhoffer.de&gt;
  */
 class VObjectInputStream extends ObjectInputStream {
 

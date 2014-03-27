@@ -33,7 +33,8 @@ package eu.mihosoft.vgitarchive;
 /**
  * Validation result.
  * @see VParamUtil
- * @author Michael Hoffer <info@michaelhoffer.de>
+ * 
+ * @author Michael Hoffer &lt;info@michaelhoffer.de&gt;
  */
 class ValidationResult {
     private String message;

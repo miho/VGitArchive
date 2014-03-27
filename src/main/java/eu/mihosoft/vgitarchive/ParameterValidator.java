@@ -33,7 +33,8 @@ package eu.mihosoft.vgitarchive;
 /**
  * A parameter validator.
  * @see VParamUtil
- * @author Michael Hoffer <info@michaelhoffer.de>
+ * 
+ * @author Michael Hoffer &lt;info@michaelhoffer.de&gt;
  */
 interface ParameterValidator {
     /**

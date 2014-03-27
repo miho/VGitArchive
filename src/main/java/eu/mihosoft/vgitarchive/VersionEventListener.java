@@ -34,7 +34,7 @@ import org.eclipse.jgit.revwalk.RevCommit;
 
 /**
  *
- * @author Michael Hoffer <info@michaelhoffer.de>
+ * @author Michael Hoffer &lt;info@michaelhoffer.de&gt;
  */
 public interface VersionEventListener {
     /**

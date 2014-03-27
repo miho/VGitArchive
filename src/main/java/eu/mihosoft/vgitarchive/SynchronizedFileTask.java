@@ -34,7 +34,8 @@ import java.io.File;
 
 /**
  * This interface defines a synchronized file task.
- * @author Michael Hoffer <info@michaelhoffer.de>
+ *
+ * @author Michael Hoffer &lt;info@michaelhoffer.de&gt;
  */
 interface SynchronizedFileTask {
     /**
