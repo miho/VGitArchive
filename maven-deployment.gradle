@@ -1,4 +1,3 @@
-apply from: 'jdkdetect.gradle'
 
 // sonatype dependencies
 apply plugin: 'maven'
