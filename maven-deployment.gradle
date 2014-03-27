@@ -1,0 +1,95 @@
+apply from: 'jdkdetect.gradle'
+
+// sonatype dependencies
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+if (file("/media/realcrypt1/sonatype-linux.properties").exists()) {
+    file("/media/realcrypt1/sonatype-linux.properties").withReader { reader ->
+        def userProps = new Properties()
+        userProps.load(reader)
+        userProps.each{
+            it->  project.ext.set(it.key, it.value)
+        }
+    }
+} else if (file("/Volumes/TRUECRYPT/sonatype-osx.properties").exists()) {
+
+    file("/Volumes/TRUECRYPT/sonatype-osx.properties").withReader { reader ->
+        def userProps = new Properties()
+        userProps.load(reader)
+        userProps.each{
+            it->  project.ext.set(it.key, it.value)
+        }
+    }
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from 'build/docs/javadoc'
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+artifacts {
+    archives jar
+    
+    archives javadocJar
+    archives sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+signArchives.onlyIf {
+    project.hasProperty('sonatypeUsername') && project.hasProperty('sonatypePassword')
+}
+
+uploadArchives.onlyIf {
+    project.hasProperty('sonatypeUsername') && project.hasProperty('sonatypePassword')
+}
+
+uploadArchives {
+    if (!project.hasProperty('sonatypeUsername') || !project.hasProperty('sonatypePassword'))
+    return
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signPom(deployment) }
+ 
+            repository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: sonatypeUsername, password: sonatypePassword)
+            }
+ 
+            pom.project {
+                name 'VGitArchive'
+                packaging 'jar'
+                description 'VGitArchive'
+                url 'https://github.com/miho/VGitArchive'
+ 
+                scm {
+                    url 'scm:https://github.com/miho/VGitArchive.git'
+                    connection 'scm:https://github.com/miho/VGitArchive.git'
+                    developerConnection 'scm:https://github.com/miho/VGitArchive.git'
+                }
+ 
+                licenses {
+                    license {
+                        name 'The BSD 2-Clause License'
+                        url 'http://opensource.org/licenses/bsd-license.php'
+                        distribution 'repo'
+                    }
+                }
+ 
+                developers {
+                    developer {
+                        id 'miho'
+                        name 'Michael Hoffer'
+                    }
+                }
+            }
+        }
+    }
+}

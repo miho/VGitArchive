@@ -1,0 +1,28 @@
+apply from: 'jdkdetect.gradle'
+
+// sonatype dependencies
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from 'build/docs/javadoc'
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+artifacts {
+    archives jar
+    
+//    archives javadocJar
+//    archives sourcesJar
+}
+
+//signing {
+//    sign configurations.archives
+//}
+

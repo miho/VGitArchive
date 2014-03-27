@@ -1,0 +1,7 @@
+apply plugin: 'maven'
+
+// maven deployment properties
+group = 'eu.mihosoft.vgitarchive'
+
+version = '0.1-r1-SNAPSHOT'
+
