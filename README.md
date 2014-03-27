@@ -35,8 +35,6 @@ Navigate to the [Gradle](http://www.gradle.org/) project (e.g., `path/to/VGitArc
 ```java
 public class Main {
   public static void main(String[] args) {
-    try {
-      VersionedFile.setTmpFolder(Paths.get("tmp"));
 
       try (
               // create and open the file
@@ -72,6 +70,5 @@ public class Main {
     } catch (IOException ex) {
       ex.printStackTrace(System.out);
     }
-  }
 }
 ```
