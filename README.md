@@ -5,6 +5,8 @@ VGitArchive
 
 Library to work with versioned archive files (zip archive with internal Git repository). Use this library to add versioning support without needing additional repositories or external command line tools.
 
+Internally VGitArchive uses [JGit](http://eclipse.org/jgit/). No external Git tools are necessary.
+
 ## How to Build VGitArchive
 
 ### Requirements
