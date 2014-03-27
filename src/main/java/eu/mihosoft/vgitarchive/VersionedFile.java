@@ -126,7 +126,7 @@ import org.eclipse.jgit.treewalk.TreeWalk;
  *
  * @author Michael Hoffer <info@michaelhoffer.de>
  */
-public final class VersionedFile implements VersionController {
+public final class VersionedFile implements VersionController, Closeable {
 
     /**
      * the archived file, e.g, <code>file.zip</code>.
@@ -1856,7 +1856,8 @@ public final class VersionedFile implements VersionController {
      * @return this file
      * @throws IOException
      */
-    public VersionedFile close() throws IOException {
+    @Override
+    public void close() throws IOException {
 
         System.out.println(">> close file: " + getFile().getAbsolutePath());
 
@@ -1864,7 +1865,7 @@ public final class VersionedFile implements VersionController {
 
         // if thid file is not opened we do nothing
         if (!isOpened()) {
-            return this;
+            return;
         }
 
         try {
@@ -1879,7 +1880,6 @@ public final class VersionedFile implements VersionController {
         // thus, we delete it
         rmTmpFolder();
 
-        return this;
     }
 
     /**
