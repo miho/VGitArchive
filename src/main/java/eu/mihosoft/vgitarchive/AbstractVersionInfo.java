@@ -43,18 +43,19 @@ interface AbstractVersionInfo {
      * <p>
      * Versions are compared as follows:
      * </p>
+     * <p>
      * The number of elements to compare is defined by the minimum version array
      * size. Iterate through all elements to compare. If elements differ then
      * break and return
      * </p>
-     * <p>
+     * 
      * <ul>
      * <li><code>-1</code> if the first element is smaller then the second
      * element</li>
      * <li><code>1</code> if the first element is greater then the second
      * element</li>
      * </ul>
-     * </p>
+     * 
      * @param o the version to compare to
      * @return <code>-1</code> if this version info is smaller,
      * <code>1</code> if this version info is bigger,

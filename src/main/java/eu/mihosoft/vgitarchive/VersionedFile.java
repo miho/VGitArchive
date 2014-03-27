@@ -79,8 +79,9 @@ import org.eclipse.jgit.treewalk.TreeWalk;
  *
  * <p>
  * <b>Example (Java code):</b></p>
- * <code>
+ * 
  * <pre>
+ * <code>
  * try {
  *     // create and open the file
  *     VersionedFile f =
@@ -121,8 +122,9 @@ import org.eclipse.jgit.treewalk.TreeWalk;
  * } catch (IOException ex) {
  *     ex.printStackTrace(System.out);
  * }
- * </pre>
  * </code>
+ * </pre>
+ * 
  *
  * @author Michael Hoffer &lt;info@michaelhoffer.de&gt;
  */
@@ -1576,7 +1578,6 @@ public final class VersionedFile implements VersionController, Closeable {
      *
      * @param i version to checkout (version counting starts with
      * <code>1</code>)
-     * @return this file
      * @throws IOException
      * @throws IllegalArgumentException if the specified version does not exist
      */
@@ -1853,7 +1854,6 @@ public final class VersionedFile implements VersionController, Closeable {
      * Closes this file. This method flushes all changes to the archive file and
      * removes the temporary content directory.
      *
-     * @return this file
      * @throws IOException
      */
     @Override
@@ -2102,7 +2102,7 @@ public final class VersionedFile implements VersionController, Closeable {
      * Each call of this method adds paths that shall be excluded. It does not
      * overwrite previous definitions.</p>
      *
-     * @param endings the endings to exclude
+     * @param paths the paths to exclude
      */
     public VersionedFile excludePathsFromCleanup(String... paths) {
         this.excludedPaths.addAll(Arrays.asList(paths));

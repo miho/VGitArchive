@@ -58,7 +58,6 @@ public interface VersionController {
     /**
      * Checks out next version. Throws an {@link IllegalStateException}
      * if if such a version does not exist.
-     * @return this file
      * @throws IOException
      * @throws IllegalStateException if the specified version does not exist
      */
