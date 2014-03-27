@@ -3,6 +3,8 @@ VGitArchive
 
 [![Build Status](https://travis-ci.org/miho/VGitArchive.svg?branch=master)](https://travis-ci.org/miho/VGitArchive)
 
+Library to work with versioned archive files (zip archive with internal Git repository). Use this library to add versioning support without needing additional repositories or external command line tools.
+
 ## How to Build VGitArchive
 
 ### Requirements
