@@ -215,7 +215,7 @@ public class VersionedFileTest {
                 BufferedWriter writer = new BufferedWriter(
                         new FileWriter(internalFile))) {
 
-                    for (int i = 1; i <= 100; i++) {
+                    for (int i = 1; i <= numCommits; i++) {
                         String timeStamp = "NanoTime " + i + ": " + System.nanoTime();
 
                         timeStamps.add(timeStamp);

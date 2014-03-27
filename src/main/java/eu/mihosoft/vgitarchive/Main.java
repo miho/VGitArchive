@@ -44,13 +44,14 @@ public class Main {
     public static void main(String[] args) {
         VersionedFile.setTmpFolder(Paths.get("tmp"));
 
-        // prepare writing to a text file
         try (
                 // create and open the file
-                VersionedFile f = new VersionedFile(new File("project.vfile")).create().open();
+                VersionedFile f = new VersionedFile(new File("project.vfile")).
+                create().open();
                 // prepare writing to a text file
                 BufferedWriter writer = new BufferedWriter(
-                        new FileWriter(f.getContent().getPath() + "/file1.txt"))) {
+                        new FileWriter(f.getContent().
+                                getPath() + "/file1.txt"))) {
 
             // first version
             f.commit("empty file created");
@@ -65,6 +66,15 @@ public class Main {
             writer.flush();
             f.commit("another timestamp added");
 
+            // checkout latest/newest version
+            f.checkoutLatestVersion();
+
+            // checkout previous versions one by one
+            while (f.hasPreviousVersion()) {
+                System.out.println("-> press enter to checkout the previous version");
+                System.in.read(); // waiting for user input
+                f.checkoutPreviousVersion();
+            }
         } catch (IOException ex) {
             ex.printStackTrace(System.out);
         }
