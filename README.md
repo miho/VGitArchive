@@ -40,11 +40,11 @@ public class Main {
     public static void main(String[] args) {
 
         try (
-                // create and open the file
-                VersionedFile f = new VersionedFile(new File("project.vfile")).
-                create().open();
-                // prepare writing to a text file
-                BufferedWriter writer = new BufferedWriter(
+            // create and open the file
+            VersionedFile f = new VersionedFile(new File("project.vfile")).
+            create().open();
+            // prepare writing to a text file
+            BufferedWriter writer = new BufferedWriter(
                         new FileWriter(f.getContent().
                                 getPath() + "/file1.txt"))) {
 
